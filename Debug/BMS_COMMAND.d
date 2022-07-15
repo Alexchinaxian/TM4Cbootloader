@@ -1,0 +1,6 @@
+# FIXED
+
+BMS_COMMAND.obj: ../BMS_COMMAND.c
+
+../BMS_COMMAND.c:
+

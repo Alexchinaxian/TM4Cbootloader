@@ -1,0 +1,66 @@
+# FIXED
+
+boot_loader/bl_usbfuncs.obj: ../boot_loader/bl_usbfuncs.c
+boot_loader/bl_usbfuncs.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stdbool.h
+boot_loader/bl_usbfuncs.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/_ti_config.h
+boot_loader/bl_usbfuncs.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/linkage.h
+boot_loader/bl_usbfuncs.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stdint.h
+boot_loader/bl_usbfuncs.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/_stdint40.h
+boot_loader/bl_usbfuncs.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/stdint.h
+boot_loader/bl_usbfuncs.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/cdefs.h
+boot_loader/bl_usbfuncs.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/_types.h
+boot_loader/bl_usbfuncs.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/machine/_types.h
+boot_loader/bl_usbfuncs.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/machine/_stdint.h
+boot_loader/bl_usbfuncs.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/_stdint.h
+boot_loader/bl_usbfuncs.obj: C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_types.h
+boot_loader/bl_usbfuncs.obj: C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_memmap.h
+boot_loader/bl_usbfuncs.obj: C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_usb.h
+boot_loader/bl_usbfuncs.obj: C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_sysctl.h
+boot_loader/bl_usbfuncs.obj: C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_nvic.h
+boot_loader/bl_usbfuncs.obj: C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_ints.h
+boot_loader/bl_usbfuncs.obj: C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_gpio.h
+boot_loader/bl_usbfuncs.obj: C:/Users/xiao.hexin.alex/workspace_v10/boot_serial/bl_config.h
+boot_loader/bl_usbfuncs.obj: C:/Users/xiao.hexin.alex/workspace_v10/boot_serial/boot_loader/bl_usbfuncs.h
+
+../boot_loader/bl_usbfuncs.c:
+
+C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stdbool.h:
+
+C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/_ti_config.h:
+
+C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/linkage.h:
+
+C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stdint.h:
+
+C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/_stdint40.h:
+
+C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/stdint.h:
+
+C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/cdefs.h:
+
+C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/_types.h:
+
+C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/machine/_types.h:
+
+C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/machine/_stdint.h:
+
+C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/_stdint.h:
+
+C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_types.h:
+
+C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_memmap.h:
+
+C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_usb.h:
+
+C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_sysctl.h:
+
+C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_nvic.h:
+
+C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_ints.h:
+
+C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_gpio.h:
+
+C:/Users/xiao.hexin.alex/workspace_v10/boot_serial/bl_config.h:
+
+C:/Users/xiao.hexin.alex/workspace_v10/boot_serial/boot_loader/bl_usbfuncs.h:
+
