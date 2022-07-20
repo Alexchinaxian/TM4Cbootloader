@@ -314,16 +314,13 @@ void Updater(void)
                 //
                 // Just acknowledge that the command was received.
                 //
-                txbuff.ID = 0x01;
-                txbuff.CMD = 0x01;
-                txbuff.ADDRESS.addressL = 0x02;
-                txbuff.packetData = COMMAND_ACK;
-                txbuff.CRC.CRC = COMMAND_ACK;
-                SendData(&txbuff, 7);
-
-                //
-                // Go back and wait for a new command.
-                //
+                txbuff.ID = 0x21;
+                txbuff.CMD = 0x02;
+                txbuff.ADDRESS.Address = 0x0260;
+                txbuff.packetData[0] = 0x00;
+                txbuff.packetData[1] = COMMAND_ACK;
+                txbuff.CRC.CRC = 0xCC00;
+                SendData(&txbuff, 8);
                 break;
             }
 
@@ -334,14 +331,14 @@ void Updater(void)
                 if(rxbuff.CMD == 0x10){
                     // Until determined otherwise, the command status is success.
                     g_ui8Status = COMMAND_RET_SUCCESS;
-                    Program_Address.ADD_L.add_H = rxbuff.packetData[1];
-                    Program_Address.ADD_L.add_L = rxbuff.packetData[2];
-                    Program_Address.ADD_H.add_H = rxbuff.packetData[3];
-                    Program_Address.ADD_H.add_L = rxbuff.packetData[4];
-                    Program_Size.Size_L.size_H = rxbuff.packetData[5];
-                    Program_Size.Size_L.size_L = rxbuff.packetData[6];
-                    Program_Size.Size_H.size_H = rxbuff.packetData[7];
-                    Program_Size.Size_H.size_L = rxbuff.packetData[8];
+                    Program_Address.ADD_L.add_H = rxbuff.packetData[2];
+                    Program_Address.ADD_L.add_L = rxbuff.packetData[3];
+                    Program_Address.ADD_H.add_H = rxbuff.packetData[4];
+                    Program_Address.ADD_H.add_L = rxbuff.packetData[5];
+                    Program_Size.Size_L.size_H = rxbuff.packetData[6];
+                    Program_Size.Size_L.size_L = rxbuff.packetData[7];
+                    Program_Size.Size_H.size_H = rxbuff.packetData[8];
+                    Program_Size.Size_H.size_L = rxbuff.packetData[9];
 
                     g_ui32TransferAddress = Program_Address.g_pui32DataBuffer;
                     g_ui32TransferSize = Program_Size.g_pui32DataSize;
@@ -390,21 +387,17 @@ void Updater(void)
                     break;
                 }
                 else if(rxbuff.CMD == 0x03){
-                    //
                     // Acknowledge that this command was received correctly.  This
                     // does not indicate success, just that the command was
                     // received.
-                    //
                     txbuff.ID = 0x01;
-                    txbuff.CMD = 0x01;
-                    txbuff.ADDRESS.addressL = 0x02;
-                    txbuff.packetData = g_ui8Status;
-                    txbuff.CRC.CRC = g_ui8Status;
-                    SendData(&txbuff, 7);
-
-                    //
+                    txbuff.CMD = 0x03;
+                    txbuff.ADDRESS.Address = 0x0600;
+                    txbuff.packetData[0] = Program_Address.ADD_L.add_L;
+                    txbuff.packetData[1] = Program_Address.ADD_L.add_H;
+                    txbuff.CRC.CRC = 0x0100;
+                    SendData(&txbuff, 8);
                     // Go back and wait for a new command.
-                    //
                     break;
                 }
             }
@@ -579,11 +572,16 @@ void Updater(void)
             //
             case ExitBootloader:
             {
-                //
-                // Send out a one-byte ACK to ensure the byte goes back to the
-                // host before we reset everything.
-                //
-                AckPacket();
+                txbuff.ID = 0x21;
+                txbuff.CMD = 0x01;
+                txbuff.ADDRESS.addressL = 0x60;
+                txbuff.ADDRESS.addressH = 0x02;
+                txbuff.packetData[0] = 0x00;
+                txbuff.packetData[1] = 0x0B;
+                txbuff.CRC.crc_L = 0x0B;
+                txbuff.CRC.crc_H= 0X0B;
+
+                SendData(&txbuff, 8);
                 //
                 // Make sure that the ACK packet has been sent.
                 //

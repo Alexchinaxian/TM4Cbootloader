@@ -58,8 +58,7 @@ void
 UARTSend(const uint8_t *pui8Data, uint32_t ui32Size)
 {
     HWREG(0x40004000 + (0x00000000 + (0x00000004 << 2))) = 0x00000004;
-
-    //
+    //ui32Size
     // Transmit the number of bytes requested on the UART port.
     //
     while(ui32Size--)

@@ -46,35 +46,35 @@ typedef struct {
         };
     }ADDRESS;
     uint8_t packetData[128];
-    uint8_t Num;
+    uint8_t Num[2];
     uint8_t CMD;
     uint8_t ID;
 } Receive_Package ;
 
 
 typedef struct {
-    union BMS_CRC
-    {
-        uint16_t CRC;
-        struct
-        {
-         uint8_t crc_L;
-         uint8_t crc_H;
-        };
-    }CRC;
+    uint8_t ID;
+    uint8_t CMD;
     union BMS_Address
     {
         uint16_t Address;
         struct
         {
-         uint8_t addressL;
-         uint8_t addressH;
+            uint8_t addressH;
+            uint8_t addressL;
         };
     }ADDRESS;
-    uint8_t packetData;
-    uint8_t CMD;
-    uint8_t ID;
-} Send_Package ;
+    uint8_t packetData[2];
+    union BMS_CRC
+    {
+        uint16_t CRC;
+        struct
+        {
+            uint8_t crc_L;
+            uint8_t crc_H;
+        };
+    }CRC;
+} Send_Package;
 Send_Package txbuff;
 Receive_Package rxbuff;
 

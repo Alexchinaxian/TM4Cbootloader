@@ -143,8 +143,7 @@ NakPacket(void)
 //! a failure.
 //
 //*****************************************************************************
-int
-ReceivePacket(Receive_Package *packet)
+int ReceivePacket(Receive_Package *packet)
 {
     int index,num;
     UARTReceive(&rxbuff.ID,1);
@@ -154,6 +153,7 @@ ReceivePacket(Receive_Package *packet)
     if(rxbuff.ADDRESS.Address == 0x6000){
         if(rxbuff.CMD == 0x06){
             UARTReceive(&rxbuff.packetData[0], 1);
+            UARTReceive(&rxbuff.packetData[2], 1);
         }
         else if(rxbuff.CMD == 0x10){
             for (index = 0;index < 3; index++) {
@@ -166,6 +166,7 @@ ReceivePacket(Receive_Package *packet)
     }
     else if(rxbuff.ADDRESS.Address == 0x6001){
         UARTReceive(&rxbuff.packetData[0], 1);
+        UARTReceive(&rxbuff.packetData[1], 1);
     }
     else if(rxbuff.ADDRESS.Address == 0x6002){
         for (index = 0;index < 3; index++) {
@@ -174,12 +175,13 @@ ReceivePacket(Receive_Package *packet)
     }
     else if(rxbuff.ADDRESS.Address == 0x6003){
         if(rxbuff.CMD == 0x10){
-            for(index = 0;index < 9; index++){
+            for(index = 0;index < 10; index++){
             UARTReceive(&rxbuff.packetData[index], 1);
             }
         }
         else if(rxbuff.CMD == 0x03){
             UARTReceive(&rxbuff.packetData[0], 1);
+            UARTReceive(&rxbuff.packetData[1], 1);
         }
         else{
             //none
