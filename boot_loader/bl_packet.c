@@ -44,7 +44,9 @@
 // The packet that is sent to acknowledge a received packet.
 //
 //*****************************************************************************
-static const uint8_t g_pui8ACK[2] = { 0, COMMAND_ACK };
+static const uint8_t g_pui8ACK[8] = {0x21,0x10,0x60,0x06,0x00,0x40,0x11,0x22};
+static const uint8_t PingACK[9] =   {0x21,0x03,0x60,0x01,0x00,0x02,0xCC,0x11,0x22};
+
 
 //*****************************************************************************
 //
@@ -103,11 +105,18 @@ CheckSum(const uint8_t *pui8Data, uint32_t ui32Size)
 void
 AckPacket(void)
 {
-    //
-    // ACK/NAK packets are the only ones with no size.
-    //
-    SendData(g_pui8ACK, 2);
+    SendData(g_pui8ACK, 8);
 }
+
+void APP_PingACK(void)
+{
+    SendData(PingACK, 9);
+}
+
+void APP_ADDACK(void){
+    SendPacket(PingACK, 9);
+}
+
 
 //*****************************************************************************
 //
@@ -143,7 +152,8 @@ NakPacket(void)
 //! a failure.
 //
 //*****************************************************************************
-int ReceivePacket(Receive_Package *packet)
+int
+ReceivePacket(Receive_Package *packet)
 {
     int index,num;
     UARTReceive(&rxbuff.ID,1);
@@ -153,7 +163,6 @@ int ReceivePacket(Receive_Package *packet)
     if(rxbuff.ADDRESS.Address == 0x6000){
         if(rxbuff.CMD == 0x06){
             UARTReceive(&rxbuff.packetData[0], 1);
-            UARTReceive(&rxbuff.packetData[2], 1);
         }
         else if(rxbuff.CMD == 0x10){
             for (index = 0;index < 3; index++) {
@@ -175,7 +184,7 @@ int ReceivePacket(Receive_Package *packet)
     }
     else if(rxbuff.ADDRESS.Address == 0x6003){
         if(rxbuff.CMD == 0x10){
-            for(index = 0;index < 10; index++){
+            for(index = 0;index < 11; index++){
             UARTReceive(&rxbuff.packetData[index], 1);
             }
         }
@@ -228,26 +237,7 @@ SendPacket(uint8_t *pui8Data, uint32_t ui32Size)
 {
     uint32_t ui32Temp;
 
-    //
-    // Caculate the checksum to be sent out with the data.
-    //
-    ui32Temp = CheckSum(pui8Data, ui32Size);
-
-    //
-    // Need to include the size and checksum bytes in the packet.
-    //
-    ui32Size += 2;
-
-    //
-    // Send out the size followed by the data.
-    //
-    SendData((uint8_t *)&ui32Size, 1);
-    SendData((uint8_t *)&ui32Temp, 1);
-    SendData(pui8Data, ui32Size - 2);
-
-    //
-    // Wait for a non zero byte.
-    //
+    SendData(pui8Data, ui32Size);
     ui32Temp = 0;
     while(ui32Temp == 0)
     {

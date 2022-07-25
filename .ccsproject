@@ -11,6 +11,6 @@
 	<createSlaveProjects value=""/>
 	<filesToOpen value=""/>
 	<origin value="C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl/boot_serial/ccs"/>
-	<isTargetManual value="true"/>
+	<isTargetManual value="false"/>
 	<connection value="common/targetdb/connections/TIXDS110_Connection.xml"/>
 </projectOptions>

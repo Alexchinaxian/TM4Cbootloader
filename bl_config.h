@@ -24,9 +24,7 @@
 
 #ifndef __BL_CONFIG_H__
 #define __BL_CONFIG_H__
-#define Handshake  0x6001        //握手
-#define WriteInfo  0x6003    //设置多字节写数据相关参数（写起始地址，数据量）
-#define WriteBin  0x6006        //以多字节形式写数据
+
 //*****************************************************************************
 //
 // The following defines are used to configure the operation of the boot
@@ -48,6 +46,7 @@
 //     STACK_SIZE
 //
 //*****************************************************************************
+
 //*****************************************************************************
 //
 // The frequency of the crystal used to clock the microcontroller.

@@ -82,6 +82,7 @@
 #ifndef UART_TXPIN_POS
 #define UART_TXPIN_POS          1
 #endif
+
 //*****************************************************************************
 //
 // This macro is used to generate a constant to represent the UART baud rate to

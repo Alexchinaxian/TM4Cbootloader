@@ -173,35 +173,35 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-boot_serial.out \
+TM4CBoot.out \
 
 EXE_OUTPUTS__QUOTED += \
-"boot_serial.out" \
+"TM4CBoot.out" \
 
 BIN_OUTPUTS += \
-boot_serial.bin \
+TM4CBoot.bin \
 
 BIN_OUTPUTS__QUOTED += \
-"boot_serial.bin" \
+"TM4CBoot.bin" \
 
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(A_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "boot_serial.out"
+	@$(MAKE) --no-print-directory -Onone "TM4CBoot.out"
 
 # Tool invocations
-boot_serial.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(A_SRCS) $(GEN_CMDS)
+TM4CBoot.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(A_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: Arm Linker'
-	"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O2 --define=ccs="ccs" --define=TARGET_IS_TM4C129_RA2 --define=PART_TM4C1290NCZAD -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=eabi --ual -z -m"boot_serial_ccs.map" --heap_size=0 --stack_size=192 -i"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/lib" -i"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="boot_serial_linkInfo.xml" --ram_model -o "boot_serial.out" $(ORDERED_OBJS) $(A_SRCS)
+	"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O2 --define=ccs="ccs" --define=TARGET_IS_TM4C129_RA2 --define=PART_TM4C1290NCZAD -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=eabi --ual -z -m"boot_serial_ccs.map" --heap_size=0 --stack_size=192 -i"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/lib" -i"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="TM4CBoot_linkInfo.xml" --ram_model -o "TM4CBoot.out" $(ORDERED_OBJS) $(A_SRCS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 	@$(MAKE) --no-print-directory post-build
 
-boot_serial.bin: $(EXE_OUTPUTS)
+TM4CBoot.bin: $(EXE_OUTPUTS)
 	@echo 'Building secondary target: "$@"'
 	@echo 'Invoking: Arm Hex Utility'
-	"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armhex" --diag_wrap=off -o "boot_serial.bin" $(EXE_OUTPUTS__QUOTED)
+	"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armhex" --diag_wrap=off -o "TM4CBoot.bin" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building secondary target: "$@"'
 	@echo ' '
 	@$(MAKE) --no-print-directory post-build
@@ -216,7 +216,7 @@ clean:
 	-@echo ' '
 
 post-build:
-	-"C:/ti/ccs1040/ccs/utils/tiobj2bin/tiobj2bin" "boot_serial.out" "boot_serial.bin" "C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armofd" "C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armhex" "C:/ti/ccs1040/ccs/utils/tiobj2bin/mkhex4bin"
+	-"C:/ti/ccs1040/ccs/utils/tiobj2bin/tiobj2bin" "TM4CBoot.out" "TM4CBoot.bin" "C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armofd" "C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armhex" "C:/ti/ccs1040/ccs/utils/tiobj2bin/mkhex4bin"
 	-@echo ' '
 
 .PHONY: all clean dependents
