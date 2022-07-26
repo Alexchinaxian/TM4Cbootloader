@@ -199,12 +199,10 @@ void ConfigureDevice(void){
                                              SYSCTL_USE_PLL |
                                          SYSCTL_CFG_VCO_480),80000000);
             SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
-            SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);//uart0瀵瑰簲鐨勫璁惧紩鑴氫负PA0锛孭A1
-            //璁剧疆PA0锛孭A1涓簎art寮曡剼
+            SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
             GPIOPinConfigure(GPIO_PA0_U0RX);
             GPIOPinConfigure(GPIO_PA1_U0TX);
             GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
-            //璁剧疆娉㈢壒鐜�115200锛屾暟鎹綅 8 锛屾牎楠屼綅 None 锛屽仠姝綅 1 锛�8鈥斺�擭鈥斺��1妯″紡
             UARTConfigSetExpClk(UART0_BASE, g_ui32SysClock, 115200,
                                     (UART_CONFIG_WLEN_8 |  UART_CONFIG_STOP_ONE |
                                      UART_CONFIG_PAR_NONE));
@@ -489,7 +487,7 @@ int i;
 void
 Updater(void)
 {
-    uint32_t ui32Size, ui32Temp, ui32FlashSize;
+    uint32_t ui32Temp, ui32FlashSize;
     //
     // Insure that the COMMAND_SEND_DATA cannot be sent to erase the boot
     // loader before the application is erased.

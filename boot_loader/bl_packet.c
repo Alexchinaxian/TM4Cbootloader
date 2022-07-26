@@ -114,7 +114,7 @@ void APP_PingACK(void)
 }
 
 void APP_ADDACK(void){
-    SendPacket(PingACK, 9);
+    SendData(PingACK, 9);
 }
 
 
@@ -152,8 +152,7 @@ NakPacket(void)
 //! a failure.
 //
 //*****************************************************************************
-int
-ReceivePacket(Receive_Package *packet)
+int ReceivePacket(Receive_Package *packet)
 {
     int index,num;
     UARTReceive(&rxbuff.ID,1);
